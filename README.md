@@ -61,29 +61,22 @@
 ### 6. 실행 결과 예시
 
 ####  💡 예시 1) 기본 구분자 사용
-<div style="background-color:#e1e4e8; padding:8px 12px; border-radius:6px; width:fit-content;">
-
+```
 덧셈할 문자열을 입력해 주세요.  
 1,2:3  
 결과 : 6
-
-</div>
+```
 
 #### 💡 예시 2) 커스텀 구분자 사용
-<div style="background-color:#e1e4e8; padding:8px 12px; border-radius:6px; width:fit-content;">
-
+```
 덧셈할 문자열을 입력해 주세요.  
 //;\n1;2;3  
 결과 : 6
-
-</div>
-
+```
 #### 💡 예시 3) 빈 문자열 입력
-<div style="background-color:#e1e4e8; padding:8px 12px; border-radius:6px; width:fit-content;">
-
+```
 덧셈할 문자열을 입력해 주세요.  
 결과 : 0
-
-</div>
+```
 
 ---
