@@ -27,7 +27,7 @@ public final class CustomDelimiter {
         return input != null && input.startsWith(PREFIX);
     }
 
-    /* 실개행(\n)과 리터럴("\\n") */
+    /* 실개행(\n)과 리터럴("\\n") 모두 허용 */
     public static Resolution parse(String input) {
         if (input == null) throw new IllegalArgumentException();
 
@@ -50,6 +50,7 @@ public final class CustomDelimiter {
         if (delimPart.length() != 1) throw new IllegalArgumentException();
         char custom = delimPart.charAt(0);
         if (Character.isISOControl(custom)) throw new IllegalArgumentException();
+        if (Character.isDigit(custom)) throw new IllegalArgumentException("숫자는 구분자로 사용할 수 없습니다: " + custom);
 
         String body = usedReal
                 ? input.substring(sepIdx + 1)                  // 실제 개행 뒤

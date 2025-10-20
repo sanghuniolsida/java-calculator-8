@@ -4,6 +4,7 @@ package calculator.delimiter;
 public final class Delimiter {
     private static final String BASIC_REGEX = "[,:]";
 
+    // 유틸리티 클래스로, 불필요한 객체 생성을 차단
     private Delimiter() {}
 
     public static String getBasicDelimiterRegex() {
