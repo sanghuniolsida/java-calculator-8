@@ -9,8 +9,6 @@ import java.util.List;
 class Parser {
 
     public List<String> parse(String input) {
-        if (input == null) throw new IllegalArgumentException();
-
         if (CustomDelimiter.isCustom(input)) {
             var r = CustomDelimiter.parse(input);
             return Arrays.asList(r.body.split(r.combinedRegex(), -1));
