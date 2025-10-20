@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 
 public final class CustomDelimiter {
     private static final String PREFIX = "//";
-    private static final char REAL_NL = '\n';
 
     private CustomDelimiter() {}
 
@@ -17,7 +16,6 @@ public final class CustomDelimiter {
             this.body = body;
         }
 
-        /** 정규식 결합용 메서드 */
         public String combinedRegex() {
             return "(?:" + Delimiter.getBasicDelimiterRegex() + "|" + Pattern.quote(delimiterPart) + ")";
         }
@@ -28,13 +26,17 @@ public final class CustomDelimiter {
     }
 
     public static Resolution parse(String input) {
-        int nl = input.indexOf(REAL_NL);
-        if (nl < 0) {
-            return new Resolution("", input); // 개행 없으면 일단 전체를 body로 반환
-        }
+        int nl = input.indexOf('\n');
+        if (nl < 0) throw new IllegalArgumentException();
 
-        String delimiterPart = input.substring(PREFIX.length(), nl);
+        String delimPart = input.substring(PREFIX.length(), nl);
+        if (delimPart.length() != 1) throw new IllegalArgumentException();
+        char custom = delimPart.charAt(0);
+        if (Character.isISOControl(custom)) throw new IllegalArgumentException();
+
         String body = input.substring(nl + 1);
-        return new Resolution(delimiterPart, body);
+        if (body.isEmpty()) throw new IllegalArgumentException();
+
+        return new Resolution(delimPart, body);
     }
 }
