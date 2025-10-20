@@ -19,16 +19,13 @@ class Parser {
         }
 
         if (CustomDelimiter.isCustom(input)) {
-            CustomDelimiter.Resolution r = CustomDelimiter.resolve(input);
+            CustomDelimiter.Resolution r = CustomDelimiter.parse(input);
 
-            if (r.body == null || r.body.isEmpty()) {
-                return List.of();
-            }
+            Validator.validateDelimiter(r.delimiterPart);
 
-            return Arrays.asList(r.body.split(r.splitRegex, -1));
+            return Arrays.asList(r.body.split(r.combinedRegex(), -1));
         }
 
-        String regex = Delimiter.getBasicDelimiterRegex();
-        return Arrays.asList(input.split(regex, -1));
+        return Arrays.asList(input.split(Delimiter.getBasicDelimiterRegex(), -1));
     }
 }
