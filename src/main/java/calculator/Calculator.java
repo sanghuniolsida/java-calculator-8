@@ -7,7 +7,7 @@ public class Calculator {
     private final Parser parser = new Parser();
 
     public BigInteger add(String input) {
-        if (input == null) throw new IllegalArgumentException();
+        if (input == null) throw new IllegalArgumentException("입력값이 null입니다.");
         String s = input.trim();
         if (s.isEmpty()) return BigInteger.ZERO;
 

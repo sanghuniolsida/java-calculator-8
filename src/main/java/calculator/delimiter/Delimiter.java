@@ -4,7 +4,7 @@ package calculator.delimiter;
 public final class Delimiter {
     private static final String BASIC_REGEX = "[,:]";
 
-    private Delimiter() {} // 유틸 클래스
+    private Delimiter() {}
 
     public static String getBasicDelimiterRegex() {
         return BASIC_REGEX;
